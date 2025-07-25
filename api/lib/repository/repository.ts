@@ -66,8 +66,13 @@ export const listenWebhook =async (req : Request, res : Response) : Promise<any>
       const content = await getContent(contentId)
       if(content){
         const {title,type} = content
-        await buyContent(userId,contentId,title,txn_ref,type,()=>{},()=>{console.log("Error")})
+        await buyContent(userId,contentId,title,txn_ref,type,()=>{},()=>{
+                 return res.status(500).json("error")
+
+        })
       }
+       return res.status(200).json(data)
+
     }
     const onFailure = (reason : string)=>{
       res.status(500).send(reason);
