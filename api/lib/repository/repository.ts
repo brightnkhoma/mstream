@@ -78,3 +78,7 @@ export const listenWebhook =async (req : Request, res : Response) : Promise<any>
     
   }
 }
+
+export const onStart =async (req : Request, res : Response) : Promise<any>=>{
+  res.status(200).json("Server online")
+}
