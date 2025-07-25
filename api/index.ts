@@ -7,7 +7,12 @@ import serverlessExpress from '@vendia/serverless-express';
 const app = express();
 const PORT = 4000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(express.raw({ type: 'application/json' }));
 app.use(express.json());
 
